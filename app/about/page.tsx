@@ -19,7 +19,7 @@ const AboutMePage = () => {
           </div>
           <div className="mt-4">
             <p className="text-gray-700 text-xl">
-              See more of my projects and about me here: <a href={"https://redbot.pro"}>redbot.pro</a>
+              See more of my projects and about me here: <a target="_blank" href={"https://redbot.pro"} className=' text-blue-400 hover:underline'>redbot.pro</a>
             </p>
           </div>
         </div>

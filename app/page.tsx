@@ -7,7 +7,14 @@ export default function Home() {
   return (
     <main className="bg-gradient-to-b from-blue-200 to-green-200 min-h-screen w-screen p-8">
       <div className='w-full md:w-4/5 mx-auto'>
-      <header className="text-center py-12">
+      <header className="text-center items-center py-12 w-full">
+        <Image
+          src={"/images/moco-recycling.png"}
+          alt={`logo`}
+          width={200}
+          height={200}
+          className='mx-auto mb-8 rounded-lg'
+        />
         <h1 className="text-4xl font-bold text-green-800 mb-4">Recycling in Montgomery County</h1>
         <p className="text-xl text-gray-700">Together, we can make a difference for our environment!</p>
       </header>
@@ -43,7 +50,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold text-green-700 mb-4">What Can Be Recycled?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-2">
-            <p className="mb-4">Montgomery County provides curbside recycling services for a variety of materials. Here's a quick guide to what goes in your blue bin:</p>
+            <p className="mb-4">Montgomery County provides curbside recycling services for a variety of materials. Here's a quick guide to what goes in your blue bins:</p>
             <div className="grid grid-cols-2 gap-4">
               {[
                 { title: "Paper", items: ["Newspapers", "Magazines", "Office paper", "Junk mail", "Flattened cardboard"] },
