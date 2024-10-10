@@ -56,7 +56,7 @@ const RecyclingLocationsPage = () => {
   );
 };
 
-const LocationCard = ({ title, address, hours, description, icon }) => (
+const LocationCard = ({ title, address, hours, description, icon }:any) => (
   <div className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
     <h3 className="text-2xl font-bold text-gray-800 mb-2 flex items-center">
       <span className="text-3xl mr-2">{icon}</span>
