@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import MenuBar from "./components/MenuBar";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <p>For Congressional App Challenge</p>
           <Link href={"/about"}><p className="text-blue-800 hover:underline cursor-pointer">See more about me here 🙋‍♂️</p></Link>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
