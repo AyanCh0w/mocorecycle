@@ -2,8 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+interface TrashItem {
+  name: string;
+  correctBin: string;
+}
 
-const trashItems = [
+const trashItems: TrashItem[] = [
   { name: 'Banana peel', correctBin: 'compost' },
   { name: 'Plastic bottle', correctBin: 'plastic-recycle' },
   { name: 'Used paper towel', correctBin: 'trash' },
@@ -36,19 +40,34 @@ const trashItems = [
   { name: 'Cereal box', correctBin: 'paper-recycle' }
 ];
 
+const binImages: { [key: string]: string } = {
+  trash: '/images/trash.png',
+  compost: '/images/compost.png',
+  'paper-recycle': '/images/paper-recycle.png',
+  'plastic-recycle': '/images/plastic-recycle.png',
+  hazard: '/images/hazard.jpg',
+};
+
+const binLabels: { [key: string]: string } = {
+  trash: 'Trash',
+  compost: 'Compost',
+  'paper-recycle': 'Paper Recycle',
+  'plastic-recycle': 'Plastic Recycle',
+  hazard: 'Hazardous Waste',
+};
+
 export default function TrashSortingQuiz() {
-  const [quizItems, setQuizItems] = useState([]);
+  const [quizItems, setQuizItems] = useState<TrashItem[]>([]);
   const [currentItem, setCurrentItem] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState<Array<{ item: TrashItem; userChoice: string; isCorrect: boolean }>>([]);
   const [feedback, setFeedback] = useState('');
   const [isAnswering, setIsAnswering] = useState(true);
   const [recyclingLevel, setRecyclingLevel] = useState('');
 
-  // New function to shuffle array
-  const shuffleArray = (array) => {
+  const shuffleArray = (array: TrashItem[]): TrashItem[] => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -56,8 +75,7 @@ export default function TrashSortingQuiz() {
     return array;
   };
 
-  // New function to get random items
-  const getRandomItems = () => {
+  const getRandomItems = (): TrashItem[] => {
     const shuffled = shuffleArray([...trashItems]);
     return shuffled.slice(0, 10);
   };
@@ -75,7 +93,7 @@ export default function TrashSortingQuiz() {
     }
   }, [fadeOut]);
 
-  const determineRecyclingLevel = (score: number, totalQuestions: number) => {
+  const determineRecyclingLevel = (score: number, totalQuestions: number): string => {
     const percentage = (score / totalQuestions) * 100;
     if (percentage >= 90) return 'Recycling Expert';
     if (percentage >= 70) return 'Eco-Warrior';
@@ -84,7 +102,7 @@ export default function TrashSortingQuiz() {
     return 'Novice Sorter';
   };
 
-  const handleChoice = (choice) => {
+  const handleChoice = (choice: string) => {
     setIsAnswering(false);
     const isCorrect = choice === quizItems[currentItem].correctBin;
     if (isCorrect) {
@@ -109,8 +127,8 @@ export default function TrashSortingQuiz() {
           setRecyclingLevel(level);
           setShowResult(true);
         }
-      }, 300); // Duration of fade out transition
-    }, 2000); // Time to show feedback before transition
+      }, 300);
+    }, 2000);
   };
 
   const resetQuiz = () => {
@@ -119,22 +137,6 @@ export default function TrashSortingQuiz() {
     setScore(0);
     setShowResult(false);
     setUserAnswers([]);
-  };
-
-  const binImages = {
-    trash: '/images/trash.png',
-    compost: '/images/compost.png',
-    'paper-recycle': '/images/paper-recycle.png',
-    'plastic-recycle': '/images/plastic-recycle.png',
-    hazard: '/images/hazard.jpg',
-  };
-
-  const binLabels = {
-    trash: 'Trash',
-    compost: 'Compost',
-    'paper-recycle': 'Paper Recycle',
-    'plastic-recycle': 'Plastic Recycle',
-    hazard: 'Hazardous Waste',
   };
 
   return (
