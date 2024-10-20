@@ -45,18 +45,6 @@ const BenefitsPage = () => {
           <li>11% decrease in waste disposed of per person from 2018 to 2022</li>
         </ul>
       </div>
-
-      <h2 className="text-3xl font-bold text-gray-800 text-center my-8">
-        New Initiatives in 2023
-      </h2>
-
-      <div className="bg-white rounded-lg p-6 shadow-lg mb-8">
-        <p className="text-gray-700 mb-4">Montgomery County expanded its recycling program to include:</p>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          <li>Mattresses and box springs (251.5 tons collected)</li>
-          <li>Durable medical equipment (18 tons collected)</li>
-        </ul>
-      </div>
       <div className='pb-24'></div>
       </div>
     </div>
